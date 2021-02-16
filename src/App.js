@@ -7,7 +7,7 @@ import { Provider } from 'react-redux'
 import store from './redux/store'
 import "bootstrap/dist/css/bootstrap.min.css"
 import { BrowserRouter as Router, Route} from "react-router-dom";
-
+import Exif_test from './components/Exif_test';
 
 function App() {
   return (
@@ -17,6 +17,7 @@ function App() {
     <Router>
     <Route path="/image" component ={Display_page} exact/>
     <Route path="/" component ={Selfie_button} exact />
+    <Route path="/exif_test" component ={Exif_test} exact />
     </Router>
     </Provider>
     </div>
