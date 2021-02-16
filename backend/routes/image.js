@@ -1,4 +1,18 @@
 const router = require('express').Router();
+const multer = require('multer');
+
+// const storage = multer.diskStorage({
+//     destination: (req, file, cb) => {
+//         cb(null, 'uploads')
+//     },
+//     filename: (req, file, cb) => {
+//         cb(null, file.fieldname + '-' + Date.now())
+//     }
+// });
+//
+// const upload = multer({ storage: storage, limits:{
+//   filesize: 1024*1024*10
+// } });
 
 let image = require('../models/image.model');
 
