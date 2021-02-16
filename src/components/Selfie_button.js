@@ -6,26 +6,17 @@ import Camera from 'react-html5-camera-photo'
 import 'react-html5-camera-photo/build/css/index.css'
 import { useEffect } from 'react'
 import axios from 'axios'
-// import '../App.css';
 import Display_page from './Display_page'
 import { BrowserRouter as Router, Route} from "react-router-dom"
 import { Redirect } from "react-router-dom"
 import { useHistory } from "react-router-dom";
-// import back from './back1.jpeg'
-// const imgdata= {
-//   image_data: dataUri,
-//   exif: '100'
-// }
-// axios.post('http://localhost:5000/image/add',imgdata)
-//  .then(res => console.log(res.data));
 
 
-
-function Selfie_button() {
+function Selfie_button(props) {
   const [dataUri, setDataUri] = useState('');
    const history = useHistory();
-  const exifcode = useSelector(state => state.exifcode)
-  const dispatch = useDispatch()
+  // const exifcode = useSelector(state => state.exifcode)
+  // const dispatch = useDispatch()
 
    useEffect(() => {
      if(dataUri != '')
@@ -33,6 +24,7 @@ function Selfie_button() {
      var formData = new FormData();
 var blob = dataURItoBlob(dataUri);
 formData.append('imagedata', blob, 'temp.jpeg');
+  props.get_code();
 axios.post('http://localhost:5000/upload_image',formData)
  .then(res => console.log(res.data));
     history.push("/image");
@@ -61,7 +53,6 @@ function dataURItoBlob(dataURI) {
   }
   return (
     <div className="r">
-
     <Camera
       idealResolution = {{width: 600, height: 700}}
 
